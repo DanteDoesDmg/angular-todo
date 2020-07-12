@@ -2,11 +2,6 @@
 @import "../../assets/variables";
 @import "../../assets/breakpoints";
 
-$color-map: (
-  high: #d50000,
-  normal: #ffab00,
-  low: #64dd17,
-);
 @mixin priority($priority) {
   width: $cardWidth;
   box-sizing: border-box;
