@@ -1,0 +1,47 @@
+@import '~@angular/material/theming';
+@import "../../assets/variables";
+@import "../../assets/breakpoints";
+
+$color-map: (
+  high: #d50000,
+  normal: #ffab00,
+  low: #64dd17,
+);
+@mixin priority($priority) {
+  width: $cardWidth;
+  box-sizing: border-box;
+  height: $cardHeight;
+  max-height: 300px;
+  margin: 4px;
+  padding: 20px;
+  &.priority-#{$priority} {
+    .marker {
+      background-color: map-get($color-map, $priority);
+      width: 30%;
+      height: 0;
+      padding: 5px;
+      border-radius: 10px;
+      margin: 4px 0;
+      display: inline-block;
+    }
+    .mat-card-title {
+      width: 100%;
+    }
+  }
+}
+.mat-card {
+  @include mat-elevation(2);
+  @include priority(high);
+  @include priority(normal);
+  @include priority(low);
+}
+.mat-card:hover{
+  @include mat-elevation(10)
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 0px !important;
+  & .mat-card-subtitle {
+    margin-bottom: 0px;
+  }
+}

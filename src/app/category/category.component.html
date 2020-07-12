@@ -1,1 +1,9 @@
-<p>category works!</p>
+<mat-card class="category mat-elevation-z6">
+  <mat-card-title>
+    <span>{{ typeStore[type].title }}</span>
+  </mat-card-title>
+  <mat-card-actions> </mat-card-actions>
+  <mat-card-content>
+    <app-task *ngFor="let task of taskList" [task]="task"></app-task>
+  </mat-card-content>
+</mat-card>

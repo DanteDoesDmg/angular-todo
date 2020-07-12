@@ -1,23 +1,26 @@
 type statusString = 'todo' | 'inProgress' | 'done';
 type priorityString = 'high' | 'normal' | 'low';
 
+interface task {
+  name: string;
+  date?: string;
+  description?: string;
+  status?: statusString;
+  priority?: priorityString;
+}
+
 export class Task {
   date: string;
   description: string;
   name: string;
   status: statusString;
   priority: priorityString;
-  constructor(
-    name,
-    description = '',
-    date?: string,
-    status?: statusString,
-    priority?: priorityString
-  ) {
-    this.name = name;
-    this.date = date || '-';
-    this.status = status || 'todo';
-    this.priority = priority || 'normal';
-    this.description = description;
+
+  constructor(task: task) {
+    this.name = task.name;
+    this.date = task.date || '-';
+    this.status = task.status || 'todo';
+    this.priority = task.priority || 'normal';
+    this.description = task.description;
   }
 }

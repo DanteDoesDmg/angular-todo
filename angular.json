@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "angular-todo"
+  "defaultProject": "angular-todo",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

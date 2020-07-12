@@ -1,0 +1,12 @@
+@import "../../assets/breakpoints";
+
+.board {
+  margin: auto auto;
+  flex-direction: column;
+  min-width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  @media (min-width: $breakpoint-laptop) {
+    flex-direction: row;
+  }
+}

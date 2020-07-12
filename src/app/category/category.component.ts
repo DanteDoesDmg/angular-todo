@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from '../task';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  typeStore:Object
+  constructor() {
+    this.typeStore = {
+      todo:{
+       title: "To Do" 
+      },
+      inProgress:{
+       title: "In progress" 
+      },
+      done:{
+       title: "Done :)" 
+      },
+    }
   }
+  @Input() taskList:Array<Task>
+  @Input() type:string
+  ngOnInit(): void {
 
+  }
 }

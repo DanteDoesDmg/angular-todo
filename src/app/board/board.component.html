@@ -1,1 +1,5 @@
-<p>board works!</p>
+<mat-card class="board">
+  <app-category type="todo" [taskList]="todoTasks"></app-category>
+  <app-category type="inProgress" [taskList]="inProgressTasks"></app-category>
+  <app-category type="done" [taskList]="doneTasks"></app-category>
+</mat-card>

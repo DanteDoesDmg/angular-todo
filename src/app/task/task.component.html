@@ -1,1 +1,15 @@
-<p>task works!</p>
+<mat-card class="mat-margin-6 priority-{{ task.priority }}">
+  <mat-card-header>
+    <mat-card-title>
+      {{ task.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{task.date}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="marker"></div>
+  <mat-card-content>
+      {{task.description}}
+  </mat-card-content>
+  {{task.status}}
+</mat-card>
