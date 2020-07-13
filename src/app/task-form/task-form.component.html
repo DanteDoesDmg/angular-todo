@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-title>New Task</mat-card-title>
+  <mat-card-actions>
+    <div class="button_container">
+      <button
+        [mat-dialog-close]="editedTask"
+        [disabled]="(editedTask.name || '').length === 0"
+        color="primary"
+        mat-icon-button
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+      <button (click)="dialogRef.close()" color="error" mat-icon-button>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Task name</mat-label>
+      <input required maxlength="20" matInput [(ngModel)]="editedTask.name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select [(value)]="editedTask.status">
+        <mat-option
+          *ngFor="let status of statuses"
+          value="{{ status.value }}"
+          >{{ status.display }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select [(value)]="editedTask.priority">
+        <mat-option
+          *ngFor="let priority of priorities"
+          value="{{ priority }}"
+          >{{ priority }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [(ngModel)]="editedTask.date" [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea maxlength="128" matInput [(ngModel)]="editedTask.description"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
