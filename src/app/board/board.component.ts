@@ -38,9 +38,11 @@ export class BoardComponent implements OnInit {
             this.inProgressTasks = sortTasksByPriorityAndDate(
               this.inProgressTasks
             );
+            break
           case 'done':
             this.doneTasks.push(newTask);
             this.doneTasks = sortTasksByPriorityAndDate(this.doneTasks);
+            break
           default:
             this.todoTasks.push(newTask);
             this.todoTasks = sortTasksByPriorityAndDate(this.todoTasks);
