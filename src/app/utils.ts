@@ -58,6 +58,6 @@ export function sortByDate(tasks: Array<Task>) {
    * @summary Funkcja zwraca posortowaną według daty tabelę obiektów Task
    */
   return tasks.sort((prev, next) =>
-    this.compare(new Date(prev.date), new Date(next.date))
+    compare(new Date(prev.date), new Date(next.date))
   );
 }
