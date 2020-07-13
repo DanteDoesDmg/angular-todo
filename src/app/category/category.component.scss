@@ -2,30 +2,45 @@
 @import "../../assets/variables";
 .category {
   box-sizing:border-box;
-  max-width: 90%;
+  width:500px;
+  max-width: auto;
   min-width: 90%;
   max-height: 90vh;
   margin: 0 16px;
   overflow-x: auto;
   margin-bottom: 24px;
+  @media (min-width: $breakpoint-laptop) and(max-width:$breakpoint-desktop) {
+    width: $cardWidth * 1.2;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    width: $cardWidth * 2.3;
+  }
   .mat-card-title {
     position: sticky;
     left: 0;
   }
   .mat-card-content {
+    min-height: $cardWidth;
     display: flex;
     flex-direction: row;
     @media (min-width: $breakpoint-laptop) and(max-width:$breakpoint-desktop) {
       flex-direction: column;
-      width: $cardWidth * 1.1;
-      align-items: center;
+      width: $cardWidth;
     }
     @media (min-width: $breakpoint-desktop) {
       width: $cardWidth * 2.1;
-      .mat-card-content {
         flex-wrap: wrap;
-        justify-content: space-between;
-      }
     }
   }
+}
+.mat-flat-button {
+  margin:0 2px
+}
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
 }

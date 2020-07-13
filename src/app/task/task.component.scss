@@ -19,6 +19,10 @@
       margin: 4px 0;
       display: inline-block;
     }
+    .mat-card-header {
+      display:flex;
+      justify-content: space-between;
+    }
     .mat-card-title {
       width: 100%;
     }
@@ -33,7 +37,14 @@
 .mat-card:hover{
   @include mat-elevation(10)
 }
-
+.header_buttons{
+  display:flex;
+  flex-direction:column;
+  .mat-icon{
+    margin-bottom:4px;
+    cursor: pointer;
+  }
+}
 ::ng-deep .mat-card-header-text {
   margin: 0px !important;
   & .mat-card-subtitle {
