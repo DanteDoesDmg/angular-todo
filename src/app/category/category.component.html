@@ -2,8 +2,22 @@
   <mat-card-title>
     <span>{{ typeStore[type].title }}</span>
   </mat-card-title>
-  <mat-card-actions> </mat-card-actions>
-  <mat-card-content>
-    <app-task *ngFor="let task of taskList" [task]="task"></app-task>
+  <mat-card-actions>
+    <span>
+      Sort by
+    </span> 
+    <mat-button-toggle-group>
+      <mat-button-toggle value="date" (click)="dateSort()">Date</mat-button-toggle>
+      <mat-button-toggle value="priority" (click)="prioritySort()">Priority</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-actions>
+  <mat-card-content
+    id="{{type}}"
+    cdkDropList
+    [cdkDropListConnectedTo]="listTypes"
+    [cdkDropListData]="taskList"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-task *ngFor="let task of taskList" [task]="task" (removeTaskEvent)="removeTask($event)" cdkDrag></app-task>
   </mat-card-content>
 </mat-card>

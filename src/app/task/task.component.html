@@ -1,5 +1,9 @@
-<mat-card class="mat-margin-6 priority-{{ task.priority }}">
+<mat-card color="primary" class="mat-margin-6 priority-{{ task.priority }}">
   <mat-card-header>
+    <div class="header_buttons">
+      <mat-icon (click)="openTaskDialog()">edit</mat-icon>
+      <mat-icon color="warn" (click)="removeTask()">delete</mat-icon>
+    </div>
     <mat-card-title>
       {{ task.name }}
     </mat-card-title>
@@ -11,5 +15,4 @@
   <mat-card-content>
       {{task.description}}
   </mat-card-content>
-  {{task.status}}
 </mat-card>
