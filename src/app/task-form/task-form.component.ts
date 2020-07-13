@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Task, task, priorityString, statusString } from '../task';
 
@@ -16,9 +16,11 @@ export class TaskFormComponent implements OnInit {
   priorities: Array<priorityString>;
   statuses: Array<statusForSelect>;
   editedTask: Task;
-  
-  constructor(public dialogRef: MatDialogRef<TaskFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task) {
+
+  constructor(
+    public dialogRef: MatDialogRef<TaskFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Task
+  ) {
     this.priorities = ['low', 'normal', 'high'];
     this.statuses = [
       {
@@ -34,9 +36,8 @@ export class TaskFormComponent implements OnInit {
         display: 'done',
       },
     ];
-    console.log(data)
-    this.editedTask = Object.assign({}, data)
+    this.editedTask = Object.assign({}, data);
   }
-  
+
   ngOnInit(): void {}
 }
