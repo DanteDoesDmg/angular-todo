@@ -382,14 +382,14 @@ class CategoryComponent {
     }
     dateSort() {
         if (!this.dateSortFlg) {
-            Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(this.taskList);
+            this.taskList = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(this.taskList);
             this.dateSortFlg = true;
             this.prioritySortFlg = false;
         }
     }
     prioritySort() {
         if (!this.prioritySortFlg) {
-            Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortTasksByPriorityAndDate"])(this.taskList);
+            this.taskList = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortTasksByPriorityAndDate"])(this.taskList);
             this.dateSortFlg = false;
             this.prioritySortFlg = true;
         }
@@ -402,9 +402,9 @@ class CategoryComponent {
             draggedTask['status'] = event.container.id;
             Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["transferArrayItem"])(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
             if (this.dateSortFlg)
-                Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(event.container.data);
+                this.taskList = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortByDate"])(event.container.data);
             if (this.prioritySortFlg)
-                Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortTasksByPriorityAndDate"])(event.container.data);
+                this.taskList = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["sortTasksByPriorityAndDate"])(event.container.data);
         }
     }
     ngOnInit() {
@@ -416,7 +416,7 @@ class CategoryComponent {
     }
 }
 CategoryComponent.ɵfac = function CategoryComponent_Factory(t) { return new (t || CategoryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_3__["BreakpointObserver"])); };
-CategoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CategoryComponent, selectors: [["app-category"]], inputs: { taskList: "taskList", type: "type" }, decls: 14, vars: 5, consts: [[1, "category", "mat-elevation-z6"], ["value", "date", 3, "click"], ["value", "priority", 3, "click"], ["cdkDropList", "", 3, "id", "cdkDropListConnectedTo", "cdkDropListData", "cdkDropListDropped"], ["cdkDrag", "", 3, "task", "cdkDragStartDelay", "removeTaskEvent", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 3, "task", "cdkDragStartDelay", "removeTaskEvent"]], template: function CategoryComponent_Template(rf, ctx) { if (rf & 1) {
+CategoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CategoryComponent, selectors: [["app-category"]], inputs: { taskList: "taskList", type: "type" }, decls: 14, vars: 6, consts: [[1, "category", "mat-elevation-z6"], ["value", "priority", 3, "checked", "click"], ["value", "date", 3, "click"], ["cdkDropList", "", 3, "id", "cdkDropListConnectedTo", "cdkDropListData", "cdkDropListDropped"], ["cdkDrag", "", 3, "task", "cdkDragStartDelay", "removeTaskEvent", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 3, "task", "cdkDragStartDelay", "removeTaskEvent"]], template: function CategoryComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-card-title");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span");
@@ -429,12 +429,12 @@ CategoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "mat-button-toggle-group");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-button-toggle", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoryComponent_Template_mat_button_toggle_click_8_listener() { return ctx.dateSort(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoryComponent_Template_mat_button_toggle_click_8_listener() { return ctx.prioritySort(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Priority");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-button-toggle", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoryComponent_Template_mat_button_toggle_click_10_listener() { return ctx.prioritySort(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Priority");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoryComponent_Template_mat_button_toggle_click_10_listener() { return ctx.dateSort(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Date");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -446,7 +446,9 @@ CategoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.typeStore[ctx.type].title);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("checked", true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("id", ctx.type);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkDropListConnectedTo", ctx.listTypes)("cdkDropListData", ctx.taskList);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -827,19 +829,28 @@ function sortTasksByPriorityAndDate(tasks) {
      *  1. priorytetu high > normal > low
      *  2. Daty
      */
-    tasks = tasks.sort((prev, next) => {
+    return tasks.sort((prev, next) => {
         if (prev.priority == next.priority) {
             return compare(new Date(prev.date), new Date(next.date));
         }
         return comparePriorities(prev.priority, next.priority);
     });
-    return tasks;
 }
 function sortByDate(tasks) {
     /**
      * @summary Funkcja zwraca posortowaną według daty tabelę obiektów Task
      */
-    return tasks.sort((prev, next) => compare(new Date(prev.date), new Date(next.date)));
+    return tasks.sort((prev, next) => {
+        if (prev.date === null) {
+            if (next.date === null) {
+                return 0;
+            }
+            return 1;
+        }
+        else {
+            compare(new Date(prev.date), new Date(next.date));
+        }
+    });
 }
 
 

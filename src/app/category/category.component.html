@@ -7,11 +7,11 @@
       Sort by
     </span>
     <mat-button-toggle-group>
+      <mat-button-toggle [checked]="true" value="priority" (click)="prioritySort()"
+        >Priority</mat-button-toggle
+      >
       <mat-button-toggle value="date" (click)="dateSort()"
         >Date</mat-button-toggle
-      >
-      <mat-button-toggle value="priority" (click)="prioritySort()"
-        >Priority</mat-button-toggle
       >
     </mat-button-toggle-group>
   </mat-card-actions>

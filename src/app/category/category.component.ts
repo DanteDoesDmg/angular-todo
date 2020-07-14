@@ -36,14 +36,14 @@ export class CategoryComponent implements OnInit {
   }
   dateSort() {
     if (!this.dateSortFlg) {
-      sortByDate(this.taskList);
+      this.taskList = sortByDate(this.taskList);
       this.dateSortFlg = true;
       this.prioritySortFlg = false;
     }
   }
   prioritySort() {
     if (!this.prioritySortFlg) {
-      sortTasksByPriorityAndDate(this.taskList);
+      this.taskList = sortTasksByPriorityAndDate(this.taskList);
       this.dateSortFlg = false;
       this.prioritySortFlg = true;
     }
@@ -59,9 +59,9 @@ export class CategoryComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      if (this.dateSortFlg) sortByDate(event.container.data);
+      if (this.dateSortFlg) this.taskList = sortByDate(event.container.data);
       if (this.prioritySortFlg)
-        sortTasksByPriorityAndDate(event.container.data);
+        this.taskList = sortTasksByPriorityAndDate(event.container.data);
     }
   }
   @Input() taskList: Array<Task>;

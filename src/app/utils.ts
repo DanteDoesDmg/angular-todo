@@ -44,20 +44,27 @@ export function sortTasksByPriorityAndDate(tasks: Array<Task>): Array<Task> {
    *  1. priorytetu high > normal > low
    *  2. Daty
    */
-  tasks = tasks.sort((prev, next) => {
+  return tasks.sort((prev, next) => {
     if (prev.priority == next.priority) {
       return compare(new Date(prev.date), new Date(next.date));
     }
     return comparePriorities(prev.priority, next.priority);
   });
-  return tasks;
 }
 
 export function sortByDate(tasks: Array<Task>) {
   /**
    * @summary Funkcja zwraca posortowaną według daty tabelę obiektów Task
    */
-  return tasks.sort((prev, next) =>
-    compare(new Date(prev.date), new Date(next.date))
+  return tasks.sort((prev, next) =>{
+    if(prev.date === null){
+      if(next.date=== null){
+        return 0
+      } 
+      return 1
+    }else{
+      compare(new Date(prev.date), new Date(next.date))
+    }
+  }
   );
 }
