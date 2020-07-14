@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task, statusString } from '../task';
 import { sortByDate, sortTasksByPriorityAndDate } from '../utils';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-
+import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -13,8 +13,8 @@ export class CategoryComponent implements OnInit {
   listTypes: Array<statusString>;
   dateSortFlg = false;
   prioritySortFlg = true;
-
-  constructor() {
+  isScreenSmall: boolean;
+  constructor(public breakpointObserver: BreakpointObserver) {
     this.listTypes = ['todo', 'inProgress', 'done'];
     this.typeStore = {
       todo: {
@@ -31,8 +31,8 @@ export class CategoryComponent implements OnInit {
       },
     };
   }
-  removeTask(task:Task){
-    this.taskList = this.taskList.filter(el=>el!==task)
+  removeTask(task: Task) {
+    this.taskList = this.taskList.filter((el) => el !== task);
   }
   dateSort() {
     if (!this.dateSortFlg) {
@@ -66,5 +66,11 @@ export class CategoryComponent implements OnInit {
   }
   @Input() taskList: Array<Task>;
   @Input() type: string;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe(['(max-width: 1079px)'])
+      .subscribe((result) => {
+        this.isScreenSmall = result.matches;
+      });
+  }
 }

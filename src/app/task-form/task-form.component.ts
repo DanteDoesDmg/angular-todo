@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Task, priorityString, statusString } from '../task';
 
-import { Task, task, priorityString, statusString } from '../task';
 
 interface statusForSelect {
   value: statusString;
@@ -19,7 +19,7 @@ export class TaskFormComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<TaskFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Task
+    @Inject(MAT_DIALOG_DATA) public data: Task,
   ) {
     this.priorities = ['low', 'normal', 'high'];
     this.statuses = [
